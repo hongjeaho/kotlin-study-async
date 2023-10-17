@@ -7,7 +7,10 @@ private val logger = KotlinLogging.logger {  }
 
 fun main() {
   measureTimeMillis {
-    createCoffee()
+    repeat(2) {
+      createCoffee()
+    }
+
   }.let { logger.debug { "경과 시간: $it mis" } }
 }
 
