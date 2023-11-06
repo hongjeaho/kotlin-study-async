@@ -3,18 +3,17 @@ package sample.coffee
 import mu.KotlinLogging
 import kotlin.system.measureTimeMillis
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 
 fun main() {
   measureTimeMillis {
     repeat(2) {
       createCoffee()
     }
-
   }.let { logger.debug { "경과 시간: $it mis" } }
 }
 
-private fun createCoffee(){
+private fun createCoffee() {
   grindCoffee()
   brewCoffee()
   boilMilk()
@@ -45,7 +44,6 @@ private fun fromMilk() {
   Thread.sleep(1000)
   logger.debug { ">> 우유 거품." }
 }
-
 
 private fun mixCoffeeAndMilk() {
   logger.debug { "커피와 우유를 섞는다.." }

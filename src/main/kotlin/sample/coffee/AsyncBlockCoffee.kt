@@ -1,11 +1,10 @@
 package sample.coffee
 
 import mu.KotlinLogging
-import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import kotlin.system.measureTimeMillis
 
-private val logger = KotlinLogging.logger {  }
+private val logger = KotlinLogging.logger { }
 private val employees = Executors.newFixedThreadPool(2)
 
 fun main() {
@@ -17,21 +16,20 @@ fun main() {
   }.let { logger.debug { "경과 시간: $it mis" } }
 }
 
-private fun createCoffee(){
-
-  val coffee = employees.submit {         //async
+private fun createCoffee() {
+  val coffee = employees.submit { // async
     grindCoffee()
     brewCoffee()
   }
 
-  val milk = employees.submit {           //async
+  val milk = employees.submit { // async
     boilMilk()
     fromMilk()
   }
 
-  while (!coffee.isDone && !milk.isDone)  // block
+  while (!coffee.isDone && !milk.isDone) // block
 
-  mixCoffeeAndMilk()                      // block
+  mixCoffeeAndMilk() // block
 }
 
 private fun grindCoffee() {
@@ -57,7 +55,6 @@ private fun fromMilk() {
   Thread.sleep(1000)
   logger.debug { ">> 우유 거품." }
 }
-
 
 private fun mixCoffeeAndMilk() {
   logger.debug { "커피와 우유를 섞는다.." }
